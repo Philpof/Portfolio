@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'Amplify';
+  src: url('fonts/Amplify_PersonalUseOnly.ttf');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-color: #222222; */
+}
+
+ul {
+  font-family: 'Amplify';
+  font-size: 3em;
+}
+
+#section1 {
+  background-image: url("img/SG.JPG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#photo {
+  height: 100%;
+  border-radius: 200px;
+  border-style: solid;
+  border-color: white;
+}
+
+#qui h3 {
+  font-family: 'Amplify';
+  font-size: 3em;
+}
+
+#section2 {
+  background-image: url("img/bass.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#footer {
+  background-color: black;
+}
+
+#phil {
+  font-family: 'Amplify';
+  font-size: 3em;
+}
+
+.logoGithub {
+  max-width: 50px;
+}
+
+.logoLinkedin {
+  max-width: 50px;
+}
+
+#clic img:last-child {
+  display: none;
+}
+#clic:hover img:last-child {
+  display: block;
+}
+#clic:hover img:first-child {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  #con {
+    padding-left: 3em;
+  }
+}
+
+@media (min-width: 1300px) {
+  #con {
+    padding-left: 4em;
+  }
+}
+
+@media (min-width: 1350px) {
+  #con {
+    padding-left: 4.5em;
+  }
+}
+
+@media (min-width: 1400px) {
+  #con {
+    padding-left: 5.5em;
+  }
+}
+
+@media (min-width: 1450px) {
+  #con {
+    padding-left: 7em;
+  }
+}
+
+@media (min-width: 1550px) {
+  #con {
+    padding-left: 0em;
+  }
+}
