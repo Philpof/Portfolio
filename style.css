@@ -7,15 +7,58 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  /* background-color: #222222; */
+#progress {
+  background-color: black;
+  height: 3px;
 }
 
-ul {
-  font-family: 'Amplify';
-  font-size: 3em;
+#progressBarA {
+  background-color: #790000;
+  width: 15%;
 }
 
+#progressBarB {
+  background-color: white;
+  width: 45%;
+}
+
+#progressBarC {
+  background-color: #790000;
+  width: 100%;
+}
+
+#progressBarD {
+  background-color: #790000;
+  width: 65%;
+}
+
+#progressBarE {
+  background-color: white;
+  width: 45%;
+}
+
+#progressBarF {
+  background-color: #790000;
+  width: 15%;
+}
+
+#progressBarG {
+  background-color: white;
+  width: 45%;
+}
+
+#progressBarH {
+  background-color: #790000;
+  width: 30%;
+}
+
+#progressBarI {
+  background-color: white;
+  width: 45%;
+}
+
+
+/* Section 1 */
 #section1 {
   background-image: url("img/SG.JPG");
   background-repeat: no-repeat;
@@ -23,32 +66,179 @@ ul {
   background-size: cover;
 }
 
-#photo {
-  height: 100%;
-  border-radius: 200px;
-  border-style: solid;
-  border-color: white;
+#titre {
+  font-family: 'Amplify';
+  font-size: 4.5em;
+  margin-left: 1em;
 }
 
-#qui h3 {
+#sstitre {
+  font-size: 1em;
+  margin-left: 20em;
+}
+
+#section1 ul {
+  font-family: 'Amplify';
+  font-size: 3em;
+  text-align: center;
+}
+
+#photo {
+  height: 100%;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: white;
+  border-width: thin;
+  padding: 0em;
+}
+
+h2 {
+  font-family: 'Amplify';
+  font-size: 5em;
+}
+
+h3 {
   font-family: 'Amplify';
   font-size: 3em;
 }
 
+
+/* Section 2 */
 #section2 {
-  background-image: url("img/bass.jpg");
+  background-image: url("img/Tube.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
+.projets {
+  display: flex;
+  width: 100%;
+  padding: 4% 2%;
+  box-sizing: border-box;
+  height: 50vh;
+}
+
+.box {
+  flex: 1;
+  overflow: hidden;
+  transition: .5s;
+  margin: 0 2%;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  line-height: 0;
+  border-radius: 10px;
+}
+
+.box>img {
+  width: 200%;
+  height: calc(100% - 10vh);
+  object-fit: cover;
+  transition: .5s;
+}
+
+.box>span {
+  display: block;
+  text-align: center;
+  line-height: 1;
+  background: rgba(0, 0, 0, 0.4);
+  font-family: 'Amplify';
+  font-size: 1.5em;
+}
+
+.box:hover {
+  flex: 1 1 50%;
+}
+
+.box:hover>img {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Section 3 */
+
+#section3 {
+  padding: inherit;
+  background: url("img/Strato.jpg") center center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+	display:flex;
+  flex-direction: column;
+  background-color: black;
+  margin-bottom: 28em;
+  position:relative;
+  &:after {
+    content: "";
+    /* background: url(http://www.transparenttextures.com/patterns/dust.png) repeat center center; */
+    opacity: 0.07;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 100;
+    pointer-events:none;
+  }
+}
+.angle {
+  cursor: pointer;
+	width: 100%;
+	height: 1000px;
+  margin-bottom: -450px;
+  background-color: #201515;
+  background-size: cover, auto;
+  background-attachment: fixed;
+  background-position: center center;
+  clip-path: polygon(50% 25%, 100% 0%, 100% 50%, 50% 75%, 0% 100%, 0% 50%);
+  transition:all .7s ease-in-out;
+  background-blend-mode: lighten;
+  &.first{
+    clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 75%, 0% 100%, 0% 0%);
+  }
+  &.last{
+    clip-path: polygon(50% 25%, 100% 0%, 100% 100%, 50% 100%, 0% 100%, 0% 50%);
+  }
+  &:hover{
+   //background-color: red;
+  }
+}
+
+.arrow{
+    clip-path: polygon(50% 25%, 100% 50%, 100% 100%, 50% 75%, 0% 100%, 0% 50%);
+  &.first{
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%, 0% 0%);
+  }
+  &.last{
+    clip-path: polygon(50% 25%, 100% 50%, 100% 100%, 50% 100%, 0% 100%, 0% 50%);
+  }
+}
+
+.one{
+  background-image: url("img/Faun.png");
+}
+
+.two{
+  background-image: url("img/Breakfast.png");
+}
+
+.three{
+  background-image: url("img/Explorateur.png");
+}
+
+.four{
+  background-image: url("img/BomberLink.png");
+}
+
+
+/* Footer */
 #footer {
   background-color: black;
 }
 
 #phil {
   font-family: 'Amplify';
-  font-size: 3em;
+  font-size: 4em;
 }
 
 .logoGithub {
@@ -62,45 +252,108 @@ ul {
 #clic img:last-child {
   display: none;
 }
+
 #clic:hover img:last-child {
   display: block;
 }
+
 #clic:hover img:first-child {
   display: none;
 }
 
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .box>span {
+    font-size: 2em;
+  }
+
+  .projets {
+    height: 60vh;
+  }
+
+  #titre {
+    font-size: 5em;
+    margin-left: 2em;
+  }
+
+  #section1 ul {
+    justify-content: space-around;
+    margin-top: 0em;
+    margin-bottom: 0.2em;
+  }
+}
+
+@media (min-width: 992px) {
+  .box>span {
+    font-size: 2.3em;
+  }
+
+  .projets {
+    height: 70vh;
+  }
+
+  #section1 ul {
+    justify-content: left;
+  }
+
+  #section1 ul a{
+    margin-right: 1.2em;
+  }
+
+  #qui {
+    padding-top: 2.5em;
+  }
+}
+
 @media (min-width: 1200px) {
-  #con {
-    padding-left: 3em;
+  .projets {
+    height: 80vh;
+  }
+
+  .box>span {
+    font-size: 3em;
+  }
+
+  #section1 ul {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    justify-content: left;
+  }
+
+  #section1 ul a{
+    margin-right: 2em;
   }
 }
 
-@media (min-width: 1300px) {
-  #con {
-    padding-left: 4em;
+@media (min-width: 1500px) {
+  .projets {
+    height: 90vh;
+  }
+
+  #section1 ul a{
+    margin-right: 0.8em;
   }
 }
 
-@media (min-width: 1350px) {
-  #con {
-    padding-left: 4.5em;
-  }
-}
+@media (min-width: 1800px) {
 
-@media (min-width: 1400px) {
-  #con {
-    padding-left: 5.5em;
+  #titre {
+    font-size: 6em;
+    margin-left: 1em;
   }
-}
 
-@media (min-width: 1450px) {
-  #con {
-    padding-left: 7em;
+  #section1 ul {
+    font-size: 4em;
+    margin-right: 2em;
+    margin-bottom: 1em;
   }
-}
 
-@media (min-width: 1550px) {
-  #con {
-    padding-left: 0em;
+  h3 {
+    font-size: 4em;
+  }
+
+  #qui p {
+    font-size: 1.3em;
   }
 }
