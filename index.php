@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-// include "sql.php";
+// include "adminSQL.php";
 ?>
 
 <!-- Section 1 A propos-->
@@ -31,9 +31,24 @@ include "header.php";
     <div id="qui" class="col-sm-10 col-md-10 col-lg-5 col-xl-5 pb-5 px-3 ml-sm-5 ml-lg-0 text-light text-justify">
       <h3>Qui suis-je ?</h3>
       <p>
-        <!-- Pour afficher la dernière entrée du champ "contenu" de la base de données -->
+        <!-- SQL : Pour afficher la dernière entrée du champ "contenu" de la base de données -->
         <?php
-          echo $test;
+
+        // echo $_POST['contenuTest'];
+          // $servername = "localhost";
+          // $username = "root";
+          // $password = "";
+          // $dataBaseName = "portfolio";
+          //
+          // try {
+          //   $bdd = new PDO("mysql:host=$servername;dbname=$dataBaseName", $username, $password);
+          //   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          // } catch(PDOException $e) {}
+
+          $sql = "SELECT id, contenu FROM propos ORDER BY id DESC LIMIT 1";
+          foreach ($bdd -> query($sql) as $lastPropos) {
+            echo $lastPropos['contenu'] . '<br>';
+          }
         ?>
         </p>
       <div class="m-3 row d-flex">

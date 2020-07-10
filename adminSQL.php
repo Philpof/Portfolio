@@ -12,33 +12,37 @@ include "header.php";
   <!-- Connection serveur -->
   <p class="font-weight-bold">Connection à la basse de donnée "portfolio" :</p>
   <?php
-  $servername = "localhost";
-  $username = "root"; // Sauf si le nom à été modifié
-  $password = ""; // Champs vide car par de MDP
-  $dataBaseName = "portfolio"; // On fait une variable pour le nom de la base de données
+    $servername = "localhost";
+    $username = "root"; // Sauf si le nom à été modifié
+    $password = ""; // Champs vide car par de MDP
+    $dataBaseName = "portfolio"; // On fait une variable pour le nom de la base de données
 
-  try {
-    $bdd = new PDO("mysql:host=$servername;dbname=$dataBaseName", $username, $password);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully / Connexion effectuée avec succès";
-    echo "<hr>";
-  } catch(PDOException $e) {
-    echo "Connection failed / Echec de la connexion : " . $e->getMessage();
-    echo "<hr>";
-  }
+    try {
+      $bdd = new PDO("mysql:host=$servername;dbname=$dataBaseName", $username, $password);
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      echo "Connected successfully / Connexion effectuée avec succès";
+      echo "<hr>";
+    } catch(PDOException $e) {
+      echo "Connection failed / Echec de la connexion : " . $e->getMessage();
+      echo "<hr>";
+    }
   ?>
 
 
   <!-- Pour afficher la dernière entrée du champ "contenu" de la base de données -->
   <p class="font-weight-bold">Dernière entrée du champ "contenu" de la table "propos" :</p>
   <?php
-  $sql = "SELECT id, contenu FROM propos ORDER BY id DESC LIMIT 1";
-  foreach ($bdd -> query($sql) as $lastPropos) {
-    $test = $lastPropos['contenu'];
-    echo $lastPropos['contenu'] . '<br>';
-  }
-  echo "<hr>";
+    $sql = "SELECT id, contenu FROM propos ORDER BY id DESC LIMIT 1";
+    foreach ($bdd -> query($sql) as $lastPropos) {
+      echo $lastPropos['contenu'] . '<br>';
+    }
+    echo "<hr>";
   ?>
+
+  <!-- <form method="post" action="index.php">
+    <input type="text" name="contenuTest"><br>
+    <input type=hidden value="$lastPropos">
+  </form> -->
 
 
   <!-- Pour afficher toutes les entrées et les champs de la base de données -->
