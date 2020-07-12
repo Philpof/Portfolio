@@ -28,6 +28,11 @@ include "connexion.php";
     echo $lastPropos['contenu']. '<hr>';
   ?>
 
+  <!-- <form method="post" action="index.php">
+    <input type="text" name="contenuTest"><br>
+    <input type=hidden value="$lastPropos">
+  </form> -->
+
 
   <!-- Pour afficher toutes les entrées et les champs de la base de données -->
   <p class="font-weight-bold">Contenu de la table "propos" :</p>

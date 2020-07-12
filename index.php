@@ -31,7 +31,7 @@ include "connexion.php";
     <div id="qui" class="col-sm-10 col-md-10 col-lg-5 col-xl-5 pb-5 px-3 ml-sm-5 ml-lg-0 text-light text-justify">
       <h3>Qui suis-je ?</h3>
       <p>
-        <!-- Pour afficher la dernière entrée du champ "contenu" de la base de données -->
+        <!-- SQL : Pour afficher la dernière entrée du champ "contenu" de la base de données -->
         <?php
           echo $lastPropos['contenu'];
         ?>
