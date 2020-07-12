@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-// include "sql.php";
+include "connexion.php";
 ?>
 
 <!-- Section 1 A propos-->
@@ -33,7 +33,7 @@ include "header.php";
       <p>
         <!-- Pour afficher la dernière entrée du champ "contenu" de la base de données -->
         <?php
-          echo $test;
+          echo $lastPropos['contenu'];
         ?>
         </p>
       <div class="m-3 row d-flex">
