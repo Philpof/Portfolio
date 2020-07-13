@@ -22,14 +22,4 @@
     $test = $lastPropos['contenu'];
   }
 
-
-
-
-
-
-
-
-
-
-
 ?>
