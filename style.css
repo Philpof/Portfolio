@@ -8,10 +8,9 @@ html {
 }
 
 #progress {
-  background-color: black;
   height: 3px;
-  /* margin-left: -1.25em;
-  margin-right: -1.25em; */
+  margin-left: -1.25em;
+  margin-right: -1.25em;
 }
 
 #progressBarA {
@@ -62,23 +61,20 @@ html {
 #titre {
   font-family: 'Amplify';
   font-size: 4.5em;
-  margin-left: 1em;
 }
 
 #sstitre {
   font-size: 1em;
-  margin-left: 20em;
+  margin-left: 10em;
 }
 
 /* ----- Vertical Nav ----- */
 .icon-bar {
-  margin-top: auto;
   margin-bottom: auto;
 }
 
 .icon-bar a {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 0px;
   text-align: center;
   transition: all 0.5s ease;
   color: white;
@@ -113,18 +109,24 @@ html {
   text-decoration: none;
 }
 
+#navbar {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
 #photo {
   height: 100%;
   max-width: 200px;
   border-radius: 20px;
-  border-style: solid;
-  border-color: white;
-  border-width: thin;
   padding: 0em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: center;
+  margin : 1em 4em 2em 4em;
+}
+
+#qui {
+  margin-bottom: 6em;
 }
 
 h2 {
@@ -274,7 +276,9 @@ h3 {
   line-height: 1;
   background: rgba(0, 0, 0, 0.4);
   font-family: 'Amplify';
-  font-size: 1.5em;
+  font-size: 1em;
+  font-size-adjust: auto;
+  text-decoration: none;
 }
 
 .box:hover {
@@ -341,6 +345,12 @@ h3 {
 
 
 /* Media Queries */
+@media (min-width: 576px) {
+  #sstitre {
+    margin-left: 16em;
+  }
+}
+
 @media (min-width: 768px) {
   .box>span {
     font-size: 2em;
@@ -353,6 +363,10 @@ h3 {
   #titre {
     font-size: 5em;
     margin-left: 2em;
+  }
+
+  #sstitre {
+    margin-left: 20em;
   }
 
   /* #section1 ul {
@@ -376,7 +390,11 @@ h3 {
   }
 
   #qui {
-    padding-top: 2.5em;
+    padding-bottom: 4em;
+  }
+
+  #photo {
+    margin : 4em 4em 4em 4em;
   }
 }
 
@@ -387,6 +405,12 @@ h3 {
 
   .box>span {
     font-size: 3em;
+  }
+
+  #navbar {
+    margin-top: -3em;
+    justify-content: flex-end;
+    align-content: flex-end;
   }
 
   /* #section1 ul {
@@ -411,7 +435,6 @@ h3 {
 }
 
 @media (min-width: 1800px) {
-
   #titre {
     font-size: 6em;
     margin-left: 1em;
