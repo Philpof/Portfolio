@@ -50,6 +50,16 @@ html {
 
 
 /* Section 1 */
+#admin a {
+  text-decoration: none;
+  font-size: 1em;
+  color: white;
+}
+
+#admin a:hover {
+  color: #790000;
+}
+
 #section1 {
   background-image: url("img/SG.JPG");
   background-repeat: no-repeat;
@@ -65,10 +75,16 @@ html {
 
 #sstitre {
   font-size: 1em;
-  margin-left: 10em;
+  margin-left: 15em;
+  margin-top: -1.5em;
 }
 
 /* ----- Vertical Nav ----- */
+#navbar {
+  margin-top: 4em;
+  margin-bottom: 5em;
+}
+
 .icon-bar {
   margin-bottom: auto;
 }
@@ -102,22 +118,17 @@ html {
     margin: 0.5em;/* espace les traits du texte */
 }
 
-#section1 a {
+#liens {
   font-family: 'Amplify';
   font-size: 3em;
   text-align: center;
   text-decoration: none;
 }
 
-#navbar {
-  margin-top: 5em;
-  margin-bottom: 5em;
-}
-
 #photo {
   height: 100%;
   max-width: 200px;
-  border-radius: 20px;
+  border-radius: 60px;
   padding: 0em;
   display: flex;
   flex-direction: column;
@@ -127,6 +138,7 @@ html {
 
 #qui {
   margin-bottom: 6em;
+  margin-left: 0em;
 }
 
 h2 {
@@ -138,102 +150,6 @@ h3 {
   font-family: 'Amplify';
   font-size: 3em;
 }
-
-
-/* Ancienne Section 2 */
-/* #section2 {
-  padding: inherit;
-  background: url("img/Strato.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-	display: flex;
-  flex-direction: column;
-  background-color: black;
-  padding-bottom: 2em;
-  position: relative;
-  &:after {
-    content: "";
-    opacity: 0.07;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: fixed;
-    z-index: 100;
-    pointer-events:none;
-  }
-}
-
-#sectTitre {
-  margin-bottom: -10em;
-}
-
-#sectTitre p {
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  max-height: 20em;
-  overflow-y: scroll;
-}
-
-
-.angle {
-  cursor: pointer;
-	width: 100%;
-	height: 1000px;
-  margin-bottom: -460px;
-  background-size: cover, auto;
-  background-attachment: fixed;
-  background-position: center center;
-  clip-path: polygon(50% 25%, 100% 0%, 100% 50%, 50% 75%, 0% 100%, 0% 50%);
-  transition:all .7s ease-in-out;
-  background-blend-mode: lighten;
-  &.first{
-    clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 75%, 0% 100%, 0% 0%);
-  }
-  &.last{
-    clip-path: polygon(50% 25%, 100% 0%, 100% 100%, 50% 100%, 0% 100%, 0% 50%);
-  }
-  &:hover{
-    background-color: red;
-  }
-}
-
-.arrow{
-    clip-path: polygon(50% 25%, 100% 50%, 100% 100%, 50% 75%, 0% 100%, 0% 50%);
-  &.first{
-    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%, 0% 0%);
-  }
-  &.last{
-    clip-path: polygon(50% 25%, 100% 50%, 100% 100%, 50% 100%, 0% 100%, 0% 50%);
-  }
-}
-
-.one{
-  background-image: url("img/Faun.png");
-}
-
-.two{
-  background-image: url("img/Breakfast.png");
-}
-
-.three{
-  background-image: url("img/Explorateur.png");
-}
-
-.four{
-  background-image: url("img/BomberLink.png");
-}
-
-#retour {
-  margin-top: 22em;
-}
-
-#retourText {
-  text-shadow: 5px 5px 5px black;
-} */
 
 
 /* Section 2 */
@@ -259,13 +175,12 @@ h3 {
   transition: .5s;
   margin: 0 2%;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-  line-height: 0;
   border-radius: 10px;
 }
 
 .box>img {
   width: 200%;
-  height: calc(100% - 10vh);
+  height: calc(100% - 15vh);
   object-fit: cover;
   transition: .5s;
 }
@@ -278,7 +193,7 @@ h3 {
   font-family: 'Amplify';
   font-size: 1em;
   font-size-adjust: auto;
-  text-decoration: none;
+  color: white;
 }
 
 .box:hover {
@@ -304,6 +219,11 @@ h3 {
   box-shadow: 0 100px 1000px rgba(0, 0, 0, 1);
 }
 
+#section4 p {
+  font-size: 3em;
+  font-family: 'Amplify';
+}
+
 
 /* Footer */
 #footer {
@@ -314,6 +234,10 @@ h3 {
 #phil {
   font-family: 'Amplify';
   font-size: 4em;
+}
+
+#dev {
+  margin-top: -1.5em;
 }
 
 .logoGithub {
@@ -346,8 +270,11 @@ h3 {
 
 /* Media Queries */
 @media (min-width: 576px) {
+  #qui {
+    margin-left: 3em;
+  }
   #sstitre {
-    margin-left: 16em;
+    margin-left: 20em;
   }
 }
 
@@ -362,18 +289,12 @@ h3 {
 
   #titre {
     font-size: 5em;
-    margin-left: 2em;
+    margin-left: 1em;
   }
 
   #sstitre {
-    margin-left: 20em;
+    margin-left: 28em;
   }
-
-  /* #section1 ul {
-    justify-content: space-around;
-    margin-top: 0em;
-    margin-bottom: 0.2em;
-  } */
 }
 
 @media (min-width: 992px) {
@@ -385,53 +306,83 @@ h3 {
     height: 70vh;
   }
 
-  #sectTitre {
-    margin-bottom: -19em;
+  #titre {
+    padding-top: 0.5em;
+  }
+
+  #sstitre {
+    margin-bottom: 0em;
+  }
+
+  #navbar {
+    margin-top: 0em;
+    margin-bottom: -10em;
   }
 
   #qui {
     padding-bottom: 4em;
+    margin-left: 7em;
   }
 
   #photo {
-    margin : 4em 4em 4em 4em;
+    margin : 0em 4em 4em 8em;
   }
 }
 
 @media (min-width: 1200px) {
+  #titre {
+    padding-top: 1.5em;
+    margin-left: 0.5em;
+  }
+
+  #sstitre {
+    margin-left: 25.5em;
+  }
+
   .projets {
     height: 80vh;
+  }
+
+  .box>span {
+    font-size: 2.5em;
+  }
+
+  #qui {
+    margin-left: 0em;
+  }
+
+  #qui p {
+    font-size: 1.1em;
+  }
+
+  #navbar {
+    margin-top: -12em;
+    margin-bottom: 6em;
+  }
+}
+
+@media (min-width: 1500px) {
+  #titre {
+    padding-top: 1em;
+    margin-left: 1em;
+    font-size: 5.5em;
+  }
+
+  #sstitre {
+    margin-left: 31.3em;
+  }
+
+  .projets {
+    height: 90vh;
   }
 
   .box>span {
     font-size: 3em;
   }
 
-  #navbar {
-    margin-top: -3em;
-    justify-content: flex-end;
-    align-content: flex-end;
+  #qui p {
+    font-size: 1.2em;
   }
-
-  /* #section1 ul {
-    margin-top: 0em;
-    margin-bottom: 0em;
-    justify-content: left;
-  }
-
-  #section1 ul a{
-    margin-right: 2em;
-  } */
-}
-
-@media (min-width: 1500px) {
-  .projets {
-    height: 90vh;
-  }
-
-  /* #section1 ul a{
-    margin-right: 0.8em;
-  } */
 }
 
 @media (min-width: 1800px) {
@@ -440,11 +391,9 @@ h3 {
     margin-left: 1em;
   }
 
-  /* #section1 ul {
-    font-size: 4em;
-    margin-right: 2em;
-    margin-bottom: 1em;
-  } */
+  #sstitre {
+    margin-left: 34.5em;
+  }
 
   h3 {
     font-size: 4em;

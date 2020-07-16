@@ -43,13 +43,13 @@ include "connexion.php";
 
   <form action="" method="post">
     <br>
-    <label for="titre" class="col-sm-1 align-top">Titre</label>
-    <input type="text" name="titre" value="" class="col-sm-2 align-top">
+    <label for="titre" class="col-sm-2 col-lg-1 align-top">Titre</label>
+    <input type="text" name="titre" value="" class="col-sm-4 align-top">
     <br>
-    <label for="contenu" class="col-sm-1 align-top">Contenu</label>
+    <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
     <textarea name="contenu" rows="10" class="col-sm-10 align-top"></textarea>
-    <br>
-    <input type="submit" name="submit" value="Envoyer" class="col-sm-2">
+
+    <input type="submit" name="submit" value="Envoyer" class="offset-lg-1 col-sm-2 mt-1">
   </form>
   <hr>
 
@@ -78,7 +78,8 @@ include "connexion.php";
           </thead>
           <tbody>";
   foreach ($bdd -> query($sql) as $row) {
-    echo "<tr><td>" . $row['id'] . "</td>";
+    echo "<tr>";
+    echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['titre'] . "</td>";
     echo "<td>" . $row['date'] . "</td>";
     echo "<td>" . $row['contenu'] . "</td></tr>";
