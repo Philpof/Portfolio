@@ -44,8 +44,8 @@ include "connexion.php";
   <!-- Ligne séparation -->
   <div id="progress" class="progress">
     <div class="progress-bar" id="progressBarA" ></div>
-    <div class="progress-bar" id="progressBarB"></div>
-    <div class="progress-bar" id="progressBarC"></div>
+    <div class="progress-bar" id="progressBarE"></div>
+    <div class="progress-bar" id="progressBarF"></div>
   </div>
 
 </section>
@@ -53,7 +53,7 @@ include "connexion.php";
 
 <!-- Section 2 : Projets & Réalisations -->
 <div id="section2" class="container-fluid text-light">
-  <h2 class="text-left pl-5 pt-3 ">Projets & Réalisations</h2>
+  <h2 class="text-right pr-5 pt-3 ">Projets & Réalisations</h2>
   <div class="projets">
     <a href="noWay.php" class="box">
       <img src="img/Faun.png">
@@ -75,8 +75,8 @@ include "connexion.php";
 
   <div class="progress" id="progress">
     <div class="progress-bar" id="progressBarA" ></div>
-    <div class="progress-bar" id="progressBarE"></div>
-    <div class="progress-bar" id="progressBarF"></div>
+    <div class="progress-bar" id="progressBarB"></div>
+    <div class="progress-bar" id="progressBarC"></div>
   </div>
 
 </div>
@@ -86,7 +86,7 @@ include "connexion.php";
 
 <!-- Section 4 : Contact-->
 <div id="section4" class="container-fluid text-light">
-  <h2 class="text-left pl-5 pt-3 ">Contact</h2>
+  <h2 class="text-right pr-5 pt-3 ">Contact</h2>
   <div class="container justify-content-center">
 
     <p class="text-center mb-5">Vous pouvez me contacter par le formulaire ci-dessous.</p>

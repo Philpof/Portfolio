@@ -40,7 +40,7 @@ html {
 
 #progressBarF {
   background-color: #790000;
-  width: 15%;
+  width: 20%;
 }
 
 #progressBarH {
@@ -144,6 +144,7 @@ html {
 h2 {
   font-family: 'Amplify';
   font-size: 5em;
+  text-shadow: 0px 0px 40px black;
 }
 
 h3 {
@@ -154,7 +155,7 @@ h3 {
 
 /* Section 2 */
 #section2 {
-  background-image: url("img/Tube.jpg");
+  background-image: url("img/Strato.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -220,8 +221,10 @@ h3 {
 }
 
 #section4 p {
-  font-size: 3em;
+  font-size: 4em;
   font-family: 'Amplify';
+  color: white;
+  text-shadow: 0px 0px 40px black;
 }
 
 
