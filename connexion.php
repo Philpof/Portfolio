@@ -2,9 +2,9 @@
 
 // Connection serveur
   $servername = "localhost";
-  $username = "philippep";
-  $password = "tVrV2bl+rHH4uQ==";
-  $dataBaseName = "philippep_portfolio";
+  $username = "root";
+  $password = "";
+  $dataBaseName = "portfolio";
 
   try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dataBaseName", $username, $password);
