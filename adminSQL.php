@@ -1,14 +1,42 @@
 <?php
 include "header.php";
 include "connexion.php";
+
+// Login par mot de passe
+$mdp = "Pomme";
+
+
+if (!isset($_POST['login'])) {
+  echo "<section class='container'><div class='alert alert-danger mt-5' role='alert'>Accès refusé</div><hr>
+    <a href='index.php'>Revenir au site</a>
+    <hr></section>";
+}
+elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
+
+    $mdp_OK = "<div class='alert alert-success' role='alert'>Bienvenu Philippe !</div>";
+
+
+
 ?>
+
 
 <section class="container">
 
   <h1 class="text-center">Page d'administration SQL</h1>
   <hr>
+
+  <!-- Afficher la réponse au bon mot de passe -->
+  <?php
+
+    echo $mdp_OK;
+
+  ?>
+
+  <hr>
   <a href="index.php">Revenir au site</a>
   <hr>
+
+
 
   <!-- Connection serveur -->
   <p class="font-weight-bold">Connection à la basse de donnée "portfolio" :</p>
@@ -103,5 +131,11 @@ include "connexion.php";
 </section>
 
 <?php
+}
+else {
+  echo "<section class='container'><div class='alert alert-danger mt-5' role='alert'>Mot de passe incorrect !</div><hr>
+    <a href='login.php'>Réessayer ?</a>
+    <hr></section>";
+}
 include "footer.php";
 ?>

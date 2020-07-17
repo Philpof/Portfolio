@@ -7,7 +7,7 @@ include "connexion.php";
 <section id="section1" class="container-fluid">
 
   <div id="admin">
-    <a href="adminSQL.php" class="d-flex justify-content-end">| Administration |</a>
+    <a href="login.php" class="d-flex justify-content-end">| Administration |</a>
   </div>
   <div class="row">
       <!-- Titre -->
@@ -97,10 +97,10 @@ include "connexion.php";
       <input type="text" name="nom" placeholder="Votre nom" class="col-sm-4 align-top mt-2" required>
       <br>
       <label for="mail" class="col-sm-2 col-lg-1 align-top pt-1">Mail</label>
-      <input type="email" name="mail" placeholder="Votre mail" class="col-sm-10 align-top pt-1" required pattern=".*@.*[.].*"></input>
+      <input type="email" name="mail" placeholder="Votre mail" class="col-sm-10 align-top" required pattern=".*@.*[.].*"></input>
       <br>
       <label for="message" class="col-sm-2 col-lg-1 align-top pt-1">Message</label>
-      <textarea name="message" rows="5" placeholder="Votre message" class="col-sm-10 align-top pt-1" required></textarea>
+      <textarea name="message" rows="5" placeholder="Votre message" class="col-sm-10 align-top" required></textarea>
       <button type="submit" class="btn btn-outline-light offset-sm-8 offset-lg-9 col-sm-2 mt-3">Envoyer</button>
     </form>
 
