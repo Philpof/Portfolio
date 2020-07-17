@@ -120,7 +120,7 @@ include "connexion.php";
 
         // Envoi d'un email
         $dest = 'p.perechodov@codeur.online';
-        $sujet = 'Via contact - Message de ' . $_POST['nom'];
+        $sujet = 'Via "Contact" - Message de ' . $_POST['nom'];
         $message = htmlspecialchars($_POST['message']); //permet d'échapper les balises et autres scripts
         $headers = 'From: ' . $_POST['mail']; //il faut laisser "headers" et le "From:" obligatoirement
 
