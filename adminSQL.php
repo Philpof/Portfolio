@@ -82,9 +82,19 @@ include "connexion.php";
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['titre'] . "</td>";
     echo "<td>" . $row['date'] . "</td>";
-    echo "<td>" . $row['contenu'] . "</td></tr>";
+    echo "<td>" . $row['contenu'] . "</td>";
+    echo "<td><form action='adminSQL.php' method='post'><button type='submit' name'suppr' class='btn btn-outline-dark'>Supprimer</button></form></tr>";
   }
   echo "</tbody></table><hr>";
+
+// a faire !!!!!!
+  // if (!empty($_POST['suppr'])) {
+  //   try {
+  //     $suppr_Ent_Prop = $bdd->prepare('DELETE FROM propos WHERE id="8"');
+  //   } catch (\Exception $e) {
+  //     echo $e->getMessage();
+  //   }
+  // }
   ?>
 
 

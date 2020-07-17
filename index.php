@@ -91,8 +91,22 @@ include "connexion.php";
 
     <p class="text-center mb-5">Vous pouvez me contacter par le formulaire ci-dessous.</p>
 
+    <!-- Formulaire de contact -->
+    <form action="index.php" method="post">
+      <label for="nom" class="col-sm-2 col-lg-1 align-top pt-2">Nom</label>
+      <input type="text" name="nom" placeholder="Votre nom" class="col-sm-4 align-top mt-2" required>
+      <br>
+      <label for="mail" class="col-sm-2 col-lg-1 align-top pt-1">Mail</label>
+      <input type="email" name="mail" placeholder="Votre mail" class="col-sm-10 align-top pt-1" required pattern=".*@.*[.].*"></input>
+      <br>
+      <label for="message" class="col-sm-2 col-lg-1 align-top pt-1">Message</label>
+      <textarea name="message" rows="5" placeholder="Votre message" class="col-sm-10 align-top pt-1" required></textarea>
+      <button type="submit" class="btn btn-outline-light offset-sm-8 offset-lg-9 col-sm-2 mt-3">Envoyer</button>
+    </form>
+
     <?php
       if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
+
         try {
           $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
           $nvl_Ent_Cont->execute(array(
@@ -103,25 +117,24 @@ include "connexion.php";
         } catch (\Exception $e) {
           echo $e->getMessage();
         }
-      }
-      else {
-        echo "<u>Merci de bien vouloir compléter tous les champs suivants :</u>";
+
+        // Envoi d'un email
+        $dest = 'p.perechodov@codeur.online';
+        $sujet = 'Via contact - Message de ' . $_POST['nom'];
+        $message = htmlspecialchars($_POST['message']); //permet d'échapper les balises et autres scripts
+        $headers = 'From: ' . $_POST['mail']; //il faut laisser "headers" et le "From:" obligatoirement
+
+        if(mail($dest, $sujet, $message, $headers)){
+            echo "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
+        }
+        else{
+            echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l\'envoie du message, veuillez réessayer ultérieurement.</div>";
+        }
+
       }
     ?>
 
-    <form action="index.php" method="post">
-      <label for="nom" class="col-sm-2 col-lg-1 align-top pt-2">Nom</label>
-      <input type="text" name="nom" placeholder="Votre nom" class="col-sm-4 align-top mt-2">
-      <br>
-      <label for="mail" class="col-sm-2 col-lg-1 align-top pt-1">Mail</label>
-      <input type="email" name="mail" placeholder="Votre mail" class="col-sm-10 align-top pt-1"></input>
-      <br>
-      <label for="message" class="col-sm-2 col-lg-1 align-top pt-1">Message</label>
-      <textarea name="message" rows="5" placeholder="Envoyer moi votre message !" class="col-sm-10 align-top pt-1"></textarea>
-      <button type="submit" class="btn btn-outline-light offset-sm-8 offset-lg-9 col-sm-2 mt-3">Envoyer</button>
-    </form>
-
-    <p class="text-center mt-5 mb-5">Merci de votre visite et à bientôt !</p>
+    <p class="text-center mt-3 mb-5">Merci de votre visite et à bientôt !</p>
 
   </div>
 
@@ -147,7 +160,7 @@ include "connexion.php";
       <a id="clic" class="m-3" href="https://github.com/Philpof" target="_blank"><img class="logoGithub" src="img/github.png" alt="GitHub"><img class="logoGithub" src="img/githubRed.png" alt="GitHub"></a>
       <a id="clic" class="m-3" href="https://www.linkedin.com/in/philippe-perechodov/" target="_blank"><img class="logoLinkedin" src="img/linkedin.png" alt="LinkedIn"><img class="logoLinkedin" src="img/linkedinRed.png" alt="LinkedIn"></a>
     </div>
-    <a href="mailto:philippe.perechodov@free.fr" class="text-light m-3">philippe.perechodov@free.fr</a>
+    <a href="mailto:philippe.perechodov@free.fr" class="text-light m-3">p.perechodov@codeur.online</a>
     <p class="m-3">© Tous droits réservés - 2020</p>
 
   </div>
