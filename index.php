@@ -118,17 +118,26 @@ include "connexion.php";
           echo $e->getMessage();
         }
 
-        // Envoi d'un email
-        $dest = 'p.perechodov@codeur.online';
-        $sujet = 'Via "Contact" - Message de ' . $_POST['nom'];
-        $message = htmlspecialchars($_POST['message']); //permet d'échapper les balises et autres scripts
-        $headers = 'From: ' . $_POST['mail']; //il faut laisser "headers" et le "From:" obligatoirement
+        // Envoi d'un email au format HTML
+        $dest = 'philippe.perechodov@free.fr'; //'p.perechodov@codeur.online';
+        $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
+        $from = $_POST['mail'];
+        $message = '<html><body>' . htmlspecialchars($_POST['message']) .'<hr>' . htmlspecialchars($_POST['nom']) . '</body></html>' ;
 
+        // Pour envoyer du courrier HTML, l'en-tête Content-type doit être défini.
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+        // Créer les en-têtes de courriel
+        $headers .= 'From: '.$from."\r\n". 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+
+        // Envoi d'email
         if(mail($dest, $sujet, $message, $headers)){
             echo "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
         }
         else{
-            echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l\'envoie du message, veuillez réessayer ultérieurement.</div>";
+            echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
         }
 
       }

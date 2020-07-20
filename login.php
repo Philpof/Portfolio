@@ -1,31 +1,73 @@
 <?php
-include "header.php";
+  define('LOGIN', 'Philippe PERECHODOV');
+  define('PASSWORD', 'azerty');
+
+  // Test de l'envoi du formulaire
+  if (!empty($_POST['password']))
+  {
+    // Les identifiants sont transmis ?
+    if(!empty($_POST['password']))
+    {
+      // Sont-ils les mêmes que les constantes ?
+      if($_POST['password'] !== PASSWORD)
+      {
+        $password_KO = "<div class='alert alert-danger mt-5' role='alert'>Mot de passe incorrect !</div>";
+      }
+        else
+      {
+        // On ouvre la session
+        session_start();
+
+        // On enregistre le login en session
+        $_SESSION['login'] = LOGIN;
+
+        // On redirige vers le fichier admin.php
+        header('Location: adminSQL.php');
+        exit();
+      }
+    }
+      else
+    {
+      echo "<div class='alert alert-info mt-5' role='alert'>Indiquez le mot de passe pour accéder à la page d'administration du site</div>";;
+    }
+  }
 ?>
 
-<section class="container">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-  <h1 class="text-center">Login</h1>
-  <hr>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Philippe PERECHODOV">
+  <title>Formulaire d'authentification</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
-  <?php
+<body>
+  <section class="container bg-light">
+    <h1 class="text-center">Login</h1>
 
-    if (!isset($_POST['login'])) {
-      echo "<div class='alert alert-info mt-5' role='alert'>Indiquez le mot de passe pour accéder à la page d'administration du site</div>";
-    }
+    <hr>
 
-  ?>
-  <form class="" action="adminSQL.php" method="post">
-    <label for="login" class="col-sm-12 col-lg-2 align-top">Mot de passe</label>
-    <input type="password" name="login" class="col-sm-4 align-top" required>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+      <label for="password" class="col-sm-12 col-lg-2 align-top">Mot de passe :</label>
+      <input type="password" name="password" id="password" class="col-sm-4 align-top border border-info" required>
 
-    <input type="submit" value="Valider" class="offset-lg-1 col-sm-2">
-  </form>
+      <input type="submit" name="submit" value="Valider" class="offset-lg-1 col-sm-2">
+    </form>
 
+    <?php
+      // Rencontre-t-on une erreur ?
+      if(!empty($password_KO))
+      {
+        echo $password_KO;
+      }
+    ?>
 
-
-  <hr>
-  <a href="index.php">Revenir au site</a>
-  <hr>
+    <hr>
+    <a href="index.php">Revenir au site</a>
+    <hr>
 
 </section>
 

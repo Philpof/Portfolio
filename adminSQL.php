@@ -1,41 +1,46 @@
 <?php
-include "header.php";
-include "connexion.php";
-
-// Login par mot de passe
-$mdp = "Pomme";
-
-
-if (!isset($_POST['login'])) {
-  echo "<section class='container'><div class='alert alert-danger mt-5' role='alert'>Accès refusé</div><hr>
-    <a href='index.php'>Revenir au site</a>
-    <hr></section>";
-}
-elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
-
-    $mdp_OK = "<div class='alert alert-success' role='alert'>Bienvenu Philippe !</div>";
-
-
-
+  // On prolonge la session
+  session_start();
+  // On teste si la variable de session existe et contient une valeur
+  if(!isset($_SESSION['login']))
+  {
+  // Si inexistante ou nulle, on redirige vers le formulaire de login
+  header('Location: login.php');
+  exit();
+  }
+  else {
+  include "connexion.php";
 ?>
 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-<section class="container">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Philippe PERECHODOV">
+  <title>Page d'Administration</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<section class="container bg-light">
 
   <h1 class="text-center">Page d'administration SQL</h1>
   <hr>
 
-  <!-- Afficher la réponse au bon mot de passe -->
+
+  <!-- Afficher le message de bienvenu -->
   <?php
-
-    echo $mdp_OK;
-
+    echo "<div class='alert alert-info text-center' role='alert'>Bonjour, " . $_SESSION['login'] .", content de te revoir !</div>";
   ?>
 
   <hr>
-  <a href="index.php">Revenir au site</a>
+  <div class="px-5 row justify-content-between">
+    <a href="index.php">Revenir au site</a>
+    <a href="logout.php" class="text-danger">Déconnexion</a>
+  </div>
   <hr>
-
 
 
   <!-- Connection serveur -->
@@ -49,6 +54,7 @@ elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
   }
   ?>
 
+
   <!-- Pour faire une entrée dans la base donnée -->
   <p class="font-weight-bold">Effectuer une nouvelle entrée dans la table "propos" :</p>
 
@@ -60,6 +66,8 @@ elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
           ':titre' => $_POST['titre'],
           ':contenu' => $_POST['contenu']
         ));
+        header('Location: adminSQL.php');
+        exit();
       } catch (\Exception $e) {
         echo $e->getMessage();
       }
@@ -72,16 +80,14 @@ elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
   <form action="" method="post">
     <br>
     <label for="titre" class="col-sm-2 col-lg-1 align-top">Titre</label>
-    <input type="text" name="titre" value="" class="col-sm-4 align-top">
+    <input type="text" name="titre" value="" class="col-sm-4 align-top border border-info" required>
     <br>
     <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
-    <textarea name="contenu" rows="10" class="col-sm-10 align-top"></textarea>
+    <textarea name="contenu" rows="10" class="col-sm-10 align-top border border-info"></textarea>
 
     <input type="submit" name="submit" value="Envoyer" class="offset-lg-1 col-sm-2 mt-1">
   </form>
   <hr>
-
-
 
 
   <!-- Pour afficher la dernière entrée du champ "contenu" de la base de données -->
@@ -125,17 +131,9 @@ elseif ($_POST['login'] == $mdp && !empty($_POST['login'])) {
   // }
   ?>
 
-
-
-
 </section>
 
 <?php
-}
-else {
-  echo "<section class='container'><div class='alert alert-danger mt-5' role='alert'>Mot de passe incorrect !</div><hr>
-    <a href='login.php'>Réessayer ?</a>
-    <hr></section>";
-}
-include "footer.php";
+} // fermeture du "else" en haut de page
+  include "footer.php";
 ?>
