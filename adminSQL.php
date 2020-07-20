@@ -32,7 +32,7 @@
 
   <!-- Afficher le message de bienvenu -->
   <?php
-    echo "<div class='alert alert-info text-center' role='alert'>Bonjour, " . $_SESSION['login'] .", content de te revoir !</div>";
+    echo "<div class='alert alert-info text-center' role='alert'>Bonjour, " . $_SESSION['login'] ." !</div>";
   ?>
 
   <hr>
@@ -100,35 +100,26 @@
   <!-- Pour afficher toutes les entrées et les champs de la base de données -->
   <p class="font-weight-bold">Contenu de la table "propos" :</p>
   <?php
-  $sql = "SELECT * FROM propos";
-  echo "<table class='table table-hover table-striped'>
-          <thead>
-            <tr>
-              <th>id.</th>
-              <th>Titre</th>
-              <th>Date</th>
-              <th>Contenu</th>
-            </tr>
-          </thead>
-          <tbody>";
-  foreach ($bdd -> query($sql) as $row) {
-    echo "<tr>";
-    echo "<td>" . $row['id'] . "</td>";
-    echo "<td>" . $row['titre'] . "</td>";
-    echo "<td>" . $row['date'] . "</td>";
-    echo "<td>" . $row['contenu'] . "</td>";
-    echo "<td><form action='adminSQL.php' method='post'><button type='submit' name'suppr' class='btn btn-outline-dark'>Supprimer</button></form></tr>";
-  }
-  echo "</tbody></table><hr>";
-
-// a faire !!!!!!
-  // if (!empty($_POST['suppr'])) {
-  //   try {
-  //     $suppr_Ent_Prop = $bdd->prepare('DELETE FROM propos WHERE id="8"');
-  //   } catch (\Exception $e) {
-  //     echo $e->getMessage();
-  //   }
-  // }
+    $sql = "SELECT * FROM propos ORDER BY id DESC";
+    echo "<table class='table table-hover table-striped'>
+            <thead>
+              <tr>
+                <th>id.</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Contenu</th>
+              </tr>
+            </thead>
+            <tbody>";
+    foreach ($bdd -> query($sql) as $row) {
+      echo "<tr>";
+      echo "<td>" . $row['id'] . "</td>";
+      echo "<td>" . $row['titre'] . "</td>";
+      echo "<td>" . $row['date'] . "</td>";
+      echo "<td>" . $row['contenu'] . "</td>";
+      echo "<td><a href='suppr.php?id=" . $row['id'] . "' class='btn btn-outline-dark'>Supprimer</a></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
+    }
+    echo "</tbody></table><hr>";
   ?>
 
 </section>
