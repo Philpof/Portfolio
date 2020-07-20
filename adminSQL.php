@@ -85,7 +85,7 @@
     <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
     <textarea name="contenu" rows="10" class="col-sm-10 align-top border border-info"></textarea>
 
-    <input type="submit" name="submit" value="Envoyer" class="offset-lg-1 col-sm-2 mt-1">
+    <input type="submit" name="submit" value="Créer" class="offset-lg-1 col-sm-2 mt-1">
   </form>
   <hr>
 
