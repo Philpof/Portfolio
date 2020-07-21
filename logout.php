@@ -1,5 +1,5 @@
 <?php
-// On démarre la session
+// On prolonge la session
 session_start ();
 
 // Réinitialisation du tableau de session

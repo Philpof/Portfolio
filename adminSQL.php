@@ -56,10 +56,10 @@
 
 
   <!-- Pour faire une entrée dans la base donnée -->
-  <p class="font-weight-bold">Effectuer une nouvelle entrée dans la table "propos" :</p>
+  <p class="font-weight-bold">Effectuer une nouvelle entrée dans la table "propos" ou modifier une entrée existante :</p>
 
   <?php
-    if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
+    if (!empty($_POST['titre']) && !empty($_POST['contenu']) && !isset($_POST['Annuler'])) {
       try {
         $nvl_Ent_Prop = $bdd->prepare('INSERT INTO propos (titre, contenu) VALUES (:titre, :contenu)');
         $nvl_Ent_Prop->execute(array(
@@ -73,19 +73,46 @@
       }
     }
     else {
-      echo "<u>Compléter les 2 champs :</u>";
+      $echo_nvl_Ent_Prop = "<p>Compléter les 2 champs suivants pour créer une nouvelle entrée :</p>";
     }
   ?>
-
+  <!-- <p>Pour modifier une entrée existante, selectionner l'id de l'entrée à modifier :</p>
   <form action="" method="post">
-    <br>
-    <label for="titre" class="col-sm-2 col-lg-1 align-top">Titre</label>
-    <input type="text" name="titre" value="" class="col-sm-4 align-top border border-info" required>
-    <br>
-    <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
-    <textarea name="contenu" rows="10" class="col-sm-10 align-top border border-info"></textarea>
+    <label for="idSelect" class="col-sm-2 col-lg-1 align-top">Id N°</label>
+    <input type="text" name="idSelect" placeholder="Laisser vide pour créer une nouvelle entrée" class="col-sm-4 align-top border border-info">
+    <input type="submit" name="submit" value="Rechercher l'id à modifier" class="col-sm-2 btn btn-outline-dark btn-sm mt-n1">
+  </form> -->
+  <form action="" method="post">
 
-    <input type="submit" name="submit" value="Créer" class="offset-lg-1 col-sm-2 mt-1">
+    <?php
+      if (empty($_POST['idModif']) || isset($_POST['Annuler'])) {
+        echo $echo_nvl_Ent_Prop;
+        echo '<label for="titre" class="col-sm-2 col-lg-1 align-top">Titre</label>
+            <input type="text" name="titre" value="" class="col-sm-4 align-top border border-info" required>
+            <br>
+            <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
+            <textarea name="contenu" rows="10" class="col-sm-10 align-top border border-info"></textarea>
+            <input type="submit" name="Creer" value="Créer la nvl entrée" class="offset-lg-1 col-sm-2 btn btn-outline-dark mt-1">';
+      }
+      else {
+        if (isset($_POST['idModif'])) {
+        $modif_Ent_Prop = $bdd->prepare('SELECT titre, contenu FROM propos WHERE id= :idSelect');
+        $modif_Ent_Prop->execute(array(':idSelect'=>$_POST['idModif']));
+        $row = $modif_Ent_Prop->fetch();
+        echo "<p>Compléter les 2 champs suivants pour modifier l'entrée selectionnée :</p>";
+        echo '<label for="titre" class="col-sm-2 col-lg-1 align-top">Titre</label>
+            <input type="text" name="titre" value="'.$row["titre"].'" class="col-sm-4 align-top border border-info" required>
+            <br>
+            <label for="contenu" class="col-sm-2 col-lg-1 align-top">Contenu</label>
+            <textarea name="contenu" rows="10" class="col-sm-10 align-top border border-info">'.$row["contenu"].'</textarea>
+            <input type="submit" name="Modifier" value="Valider la modification" class="offset-lg-1 col-sm-2 btn btn-outline-dark mt-1">
+            <input type="submit" name="Annuler" value="Annuler la modification" class="offset-lg-1 col-sm-2 btn btn-outline-danger mt-1" >';
+        } else {
+          header('Location: adminSQL.php');
+          exit();
+        }
+      }
+    ?>
   </form>
   <hr>
 
@@ -117,7 +144,8 @@
       echo "<td>" . $row['titre'] . "</td>";
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
-      echo "<td><a href='suppr.php?id=" . $row['id'] . "' class='btn btn-outline-dark'>Supprimer</a></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
+      echo "<td><form action='' method='post'><input type='submit' name='". $_POST['idModif'] = $row['id'] . "' value='Modifier' class='btn btn-outline-dark'></form></td>";
+      echo "<td><a href='suppr.php?idSuppr=" . $row['id'] . "' class='btn btn-outline-dark'>Supprimer</a></td></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
     }
     echo "</tbody></table><hr>";
   ?>

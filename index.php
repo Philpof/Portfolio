@@ -119,7 +119,7 @@ include "connexion.php";
         }
 
         // Envoi d'un email au format HTML
-        $dest = 'philippe.perechodov@free.fr'; //'p.perechodov@codeur.online';
+        $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
         $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
         $from = $_POST['mail'];
         $message = '<html><body>' . htmlspecialchars($_POST['message']) .'<hr>' . htmlspecialchars($_POST['nom']) . '</body></html>' ;

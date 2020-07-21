@@ -1,6 +1,6 @@
 <?php
   define('LOGIN', 'Philippe PERECHODOV');
-  define('PASSWORD', 'azerty');
+  define('PASSWORD', 'poil666');
 
   // Test de l'envoi du formulaire
   if (!empty($_POST['password']))
