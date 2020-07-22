@@ -92,7 +92,7 @@ include "connexion.php";
     <p class="text-center mb-5">Vous pouvez me contacter par le formulaire ci-dessous.</p>
 
     <!-- Formulaire de contact -->
-    <form action="index.php" method="post">
+    <form action="index.php#?contactForm" method="post">
       <label for="nom" class="col-sm-2 col-lg-1 align-top pt-2">Nom</label>
       <input type="text" name="nom" placeholder="Votre nom" class="col-sm-4 align-top mt-2" required>
       <br>
@@ -101,43 +101,38 @@ include "connexion.php";
       <br>
       <label for="message" class="col-sm-2 col-lg-1 align-top pt-1">Message</label>
       <textarea name="message" rows="5" placeholder="Votre message" class="col-sm-10 align-top" required></textarea>
-      <button type="submit" class="btn btn-outline-light offset-sm-8 offset-lg-9 col-sm-2 mt-3">Envoyer</button>
+      <div class="row justify-content-around">
+        <input type="choose" name="guitare" pattern="guitare" placeholder="Anti-spam : Tapez le mot 'guitare' ici" class="col-sm-4 align-top mt-2" required>
+        <button type="submit" class="btn btn-outline-light col-sm-2 mt-2">Envoyer l'email</button>
+      </div>
     </form>
+
 
     <?php
       if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
-
         try {
           $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
           $nvl_Ent_Cont->execute(array(
             ':nom' => $_POST['nom'],
             ':mail' => $_POST['mail'],
-            ':message' => $_POST['message']
+            ':message' => nl2br($_POST['message'])
           ));
         } catch (\Exception $e) {
           echo $e->getMessage();
         }
 
-        // Envoi d'un email au format HTML
+        // Envoi d'un email
         $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
         $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
-        $from = $_POST['mail'];
-        $message = '<html><body>' . htmlspecialchars($_POST['message']) .'<hr>' . htmlspecialchars($_POST['nom']) . '</body></html>' ;
-
-        // Pour envoyer du courrier HTML, l'en-tête Content-type doit être défini.
-        $headers = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-        // Créer les en-têtes de courriel
-        $headers .= 'From: '.$from."\r\n". 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
-
+        $headers = 'From:' . $_POST['mail'] .'';
+        $message = htmlspecialchars($_POST["message"]);
 
         // Envoi d'email
         if(mail($dest, $sujet, $message, $headers)){
-            echo "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
+          echo "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
         }
         else{
-            echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
+          echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
         }
 
       }

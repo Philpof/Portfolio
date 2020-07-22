@@ -67,7 +67,7 @@
         $nvl_Ent_Prop = $bdd->prepare('INSERT INTO propos (titre, contenu) VALUES (:titre, :contenu)');
         $nvl_Ent_Prop->execute(array(
           ':titre' => $_POST['titre'],
-          ':contenu' => $_POST['contenu']
+          ':contenu' => nl2br($_POST['contenu'])
         ));
         header('Location: adminSQL.php');
         exit();
@@ -81,7 +81,7 @@
         $modif_Ent_Prop = $bdd->prepare('UPDATE propos SET titre = :titre, contenu = :contenu WHERE id = :idSelect');
         $modif_Ent_Prop->execute(array(
           ':titre' => $_POST['titre'],
-          ':contenu' => $_POST['contenu'],
+          ':contenu' => nl2br($_POST['contenu']),
           ':idSelect'=>$_GET['idSelect']
         ));
         header('Location: adminSQL.php');
