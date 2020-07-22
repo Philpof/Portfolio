@@ -89,21 +89,21 @@ include "connexion.php";
   <h2 class="text-right pr-5 pt-3 ">Contact</h2>
   <div class="container justify-content-center">
 
-    <p class="text-center mb-5">Vous pouvez me contacter par le formulaire ci-dessous.</p>
+    <p class="text-center">Vous pouvez me contacter par le formulaire ci-dessous.</p>
 
     <!-- Formulaire de contact -->
     <form action="index.php#?contactForm" method="post">
-      <label for="nom" class="col-sm-2 col-lg-1 align-top pt-2">Nom</label>
-      <input type="text" name="nom" placeholder="Votre nom" class="col-sm-4 align-top mt-2" required>
+      <label for="nom" class="col-lg-1 align-top pt-2">Nom</label>
+      <input type="text" name="nom" placeholder="Votre nom" class="col-lg-4 align-top mt-2" required>
       <br>
-      <label for="mail" class="col-sm-2 col-lg-1 align-top pt-1">Mail</label>
-      <input type="email" name="mail" placeholder="Votre mail" class="col-sm-10 align-top" required pattern=".*@.*[.].*"></input>
+      <label for="mail" class="col-lg-1 align-top pt-2">Mail</label>
+      <input type="email" name="mail" placeholder="Votre mail" class="col-lg-8 align-top mt-2" required pattern=".*@.*[.].*"></input>
       <br>
-      <label for="message" class="col-sm-2 col-lg-1 align-top pt-1">Message</label>
-      <textarea name="message" rows="5" placeholder="Votre message" class="col-sm-10 align-top" required></textarea>
+      <label for="message" class="col-lg-1 align-top pt-2">Message</label>
+      <textarea name="message" rows="5" placeholder="Votre message" class="col-lg-10 align-top mt-2" required></textarea>
       <div class="row justify-content-around">
-        <input type="choose" name="guitare" pattern="guitare" placeholder="Anti-spam : Tapez le mot 'guitare' ici" class="col-sm-4 align-top mt-2" required>
-        <button type="submit" class="btn btn-outline-light col-sm-2 mt-2">Envoyer l'email</button>
+        <input type="choose" name="guitare" pattern="guitare" placeholder="Anti-spam : Tapez le mot 'guitare' ici" class="col-sm-8 col-lg-4 align-top mt-3" required>
+        <button type="submit" class="btn btn-outline-light col-sm-8 col-lg-2 mt-3">Envoyer l'email</button>
       </div>
     </form>
 
@@ -138,7 +138,7 @@ include "connexion.php";
       }
     ?>
 
-    <p class="text-center mt-3 mb-5">Merci de votre visite et à bientôt !</p>
+    <p class="text-center mt-3">Merci de votre visite et à bientôt !</p>
 
   </div>
 
