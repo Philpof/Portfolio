@@ -182,7 +182,7 @@
       echo "<td>" . $row['titre'] . "</td>";
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
-      echo "<td><a href='adminSQL.php?idDesarchive=" . $row['id'] . "' class='btn btn-warning'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "archive.php"
+      echo "<td><a href='adminSQL.php?idDesarchive=" . $row['id'] . "' class='btn btn-dark'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "archive.php"
     }
     echo "</tbody></table><hr>";
   ?>

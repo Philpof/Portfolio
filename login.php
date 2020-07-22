@@ -1,6 +1,12 @@
 <?php
-  define('LOGIN', 'Philippe PERECHODOV');
-  define('PASSWORD', 'poil666');
+  include "connexion.php";
+  $sql = "SELECT * FROM users WHERE id = '1'";
+  foreach  ($bdd->query($sql) as $row) {
+  }
+
+
+  define('LOGIN', $row['login']);
+  define('PASSWORD', $row['mdp']);
 
   // Test de l'envoi du formulaire
   if (!empty($_POST['password']))
