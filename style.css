@@ -43,7 +43,7 @@ html {
   width: 20%;
 }
 
-#progressBarH {
+#progressBarG {
   background-color: #790000;
   width: 30%;
 }
@@ -156,6 +156,29 @@ h3 {
 
 /* Section 2 */
 #section2 {
+  background-image: url("img/Bass.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: 0 100px 1000px rgba(0, 0, 0, 1);
+}
+
+#section2 h2 {
+  color: black;
+}
+
+.projets {
+  display: flex;
+  width: 100%;
+  height: 50vh;
+}
+
+
+
+/* Section 3 */
+
+#section3 {
   background-image: url("img/Strato.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -163,7 +186,7 @@ h3 {
   box-shadow: 0 100px 1000px rgba(0, 0, 0, 1);
 }
 
-.projets {
+.articles {
   display: flex;
   width: 100%;
   padding: 4% 2%;
@@ -190,11 +213,12 @@ h3 {
 .box>span {
   display: block;
   text-align: center;
-  line-height: 1;
+  margin-bottom: 1em;
+  line-height: 1.3;
   background: rgba(0, 0, 0, 0.4);
   font-family: 'Amplify';
-  font-size: 1em;
-  font-size-adjust: auto;
+  font-size: 1.7em;
+  height: 100%;
   color: white;
 }
 
@@ -206,10 +230,6 @@ h3 {
   width: 100%;
   height: 100%;
 }
-
-
-/* Section 3 */
-
 
 /* Section 4 */
 #section4 {
@@ -265,6 +285,32 @@ h3 {
   display: none;
 }
 
+/* ----- Page "article" ----- */
+#article {
+  background-image: url("img/Tube.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: 0 100px 1000px rgba(0, 0, 0, 1);
+}
+
+#titreArticle {
+  font-family: 'Roboto';
+  font-size: 4.5em;
+}
+
+#photoArticle {
+  height: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  padding: 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin : 1em 4em 2em 4em;
+
+}
 
 /* ----- Page "noway" pour tester les liens ----- */
 #containerNoWay {
@@ -288,6 +334,10 @@ h3 {
     font-size: 2em;
   }
 
+  .articles {
+    height: 60vh;
+  }
+
   .projets {
     height: 60vh;
   }
@@ -305,6 +355,10 @@ h3 {
 @media (min-width: 992px) {
   .box>span {
     font-size: 2.3em;
+  }
+
+  .articles {
+    height: 70vh;
   }
 
   .projets {
@@ -350,6 +404,10 @@ h3 {
     margin-left: 25.5em;
   }
 
+  .articles {
+    height: 80vh;
+  }
+
   .projets {
     height: 80vh;
   }
@@ -391,6 +449,10 @@ h3 {
 
   #sstitre {
     margin-left: 31.3em;
+  }
+
+  .articles {
+    height: 90vh;
   }
 
   .projets {

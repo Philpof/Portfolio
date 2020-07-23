@@ -6,5 +6,12 @@
     $select_Ent_Prop = $bdd->prepare('SELECT id, titre, contenu FROM propos WHERE id = :idSelect');
     $select_Ent_Prop->execute(array(':idSelect'=>$_GET['idSelect']));
     $row_idSelect = $select_Ent_Prop->fetch();
+
+      //   header('Location: adminSQL.php');
+      //   exit();
+      // }
+      // else {
+      //   header('Location: adminSQL.php');
+      //   exit();
   }
 ?>

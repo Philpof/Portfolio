@@ -1,7 +1,40 @@
 <?php
 include "header.php";
 include "connexion.php";
+
+if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
+  try {
+    $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
+    $nvl_Ent_Cont->execute(array(
+      ':nom' => $_POST['nom'],
+      ':mail' => $_POST['mail'],
+      ':message' => nl2br($_POST['message'])
+    ));
+  } catch (\Exception $e) {
+    echo $e->getMessage();
+  }
+
+  // Envoi d'un email
+  $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
+  $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
+  $headers = 'From:' . $_POST['mail'] .'';
+  $message = htmlspecialchars($_POST["message"]);
+
+  // Envoi d'email
+  if(mail($dest, $sujet, $message, $headers)){
+    header("Location: index.php?action=ok#section4");
+    if(isset($_GET['action']) && $_GET['action'] == "ok"){
+    $emailEnvoi = "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
+    }
+  }
+  elseif(!mail($dest, $sujet, $message, $headers)){
+  }
+  else {
+    $emailEnvoi = "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
+  }
+}
 ?>
+
 
 <!-- Section 1 A propos-->
 <section id="section1" class="container-fluid">
@@ -23,7 +56,7 @@ include "connexion.php";
     </div>
   </div>
 
-  <!-- Qui suis-le ?-->
+  <!-- Qui suis-je ?-->
   <div class="row">
     <img id="photo" class="col-sm-7 col-md-5 col-lg-2 text-white" src="img/PhotoCV.png" alt="Photo ">
     <div id="qui" class="col-sm-10 col-md-10 col-xl-6 text-light text-justify">
@@ -33,7 +66,7 @@ include "connexion.php";
         <?php
           echo $lastPropos['contenu'];
         ?>
-        </p>
+      </p>
       <div class="m-2 row d-flex">
         <a id="clic" class="mx-3" href="https://github.com/Philpof" target="_blank"><img class="logoGithub" src="img/github.png" alt="GitHub"><img class="logoGithub" src="img/githubRed.png" alt="GitHub"></a>
         <a id="clic" class="mx-3" href="https://www.linkedin.com/in/philippe-perechodov/" target="_blank"><img class="logoLinkedin" src="img/linkedin.png" alt="LinkedIn"><img class="logoLinkedin" src="img/linkedinRed.png" alt="LinkedIn"></a>
@@ -53,26 +86,48 @@ include "connexion.php";
 
 <!-- Section 2 : Projets & Réalisations -->
 <div id="section2" class="container-fluid text-light">
-  <h2 class="text-right pr-5 pt-3 ">Projets & Réalisations</h2>
+  <h2 class="text-left pl-5 pt-3">Projets & Réalisations</h2>
   <div class="projets">
-    <a href="noWay.php" class="box">
+
+
+
+
+  </div>
+
+  <!-- Ligne séparation -->
+  <div class="progress" id="progress">
+    <div class="progress-bar" id="progressBarC" ></div>
+    <div class="progress-bar" id="progressBarB"></div>
+    <div class="progress-bar" id="progressBarA"></div>
+  </div>
+
+</div>
+
+
+<!-- Section 3 : Articles-->
+
+<div id="section3" class="container-fluid text-light">
+  <h2 class="text-right pr-5 pt-3 ">Articles</h2>
+  <div class="articles">
+    <a href="article.php" class="box">
       <img src="img/Faun.png">
-      <span>Template Faun</span>
+      <span>Intégration Faun</span>
     </a>
-    <a href="noWay.php" class="box">
+    <a href="article.php" class="box">
       <img src="img/Breakfast.png">
-      <span>Template Breakfast</span>
+      <span>Intégration Breakfast</span>
     </a>
-    <a href="noWay.php" class="box">
+    <a href="article.php" class="box">
       <img src="img/Explorateur.png">
       <span>Explorateur de fichiers</span>
     </a>
-    <a href="noWay.php" class="box">
+    <a href="article.php" class="box">
       <img src="img/BomberLink.png">
       <span>BomberLink</span>
     </a>
   </div>
 
+  <!-- Ligne séparation -->
   <div class="progress" id="progress">
     <div class="progress-bar" id="progressBarA" ></div>
     <div class="progress-bar" id="progressBarB"></div>
@@ -81,18 +136,15 @@ include "connexion.php";
 
 </div>
 
-
-<!-- Section 3 : Articles-->
-
 <!-- Section 4 : Contact-->
 <div id="section4" class="container-fluid text-light">
-  <h2 class="text-right pr-5 pt-3 ">Contact</h2>
+  <h2 class="text-left pl-5 pt-3 ">Contact</h2>
   <div class="container justify-content-center">
 
     <p class="text-center">Vous pouvez me contacter par le formulaire ci-dessous.</p>
 
     <!-- Formulaire de contact -->
-    <form action="index.php#?contactForm" method="post">
+    <form action="index.php" method="post">
       <label for="nom" class="col-lg-1 align-top pt-2">Nom</label>
       <input type="text" name="nom" placeholder="Votre nom" class="col-lg-4 align-top mt-2" required>
       <br>
@@ -103,48 +155,19 @@ include "connexion.php";
       <textarea name="message" rows="5" placeholder="Votre message" class="col-lg-10 align-top mt-2" required></textarea>
       <div class="row justify-content-around">
         <input type="choose" name="guitare" pattern="guitare" placeholder="Anti-spam : Tapez le mot 'guitare' ici" class="col-sm-8 col-lg-4 align-top mt-3" required>
-        <button type="submit" class="btn btn-outline-light col-sm-8 col-lg-2 mt-3">Envoyer l'email</button>
+        <button type="submit" name="envoyerMail" class="btn btn-outline-light col-sm-8 col-lg-2 mt-3">Envoyer l'email</button>
       </div>
     </form>
-
-
     <?php
-      if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
-        try {
-          $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
-          $nvl_Ent_Cont->execute(array(
-            ':nom' => $_POST['nom'],
-            ':mail' => $_POST['mail'],
-            ':message' => nl2br($_POST['message'])
-          ));
-        } catch (\Exception $e) {
-          echo $e->getMessage();
-        }
-
-        // Envoi d'un email
-        $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
-        $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
-        $headers = 'From:' . $_POST['mail'] .'';
-        $message = htmlspecialchars($_POST["message"]);
-
-        // Envoi d'email
-        if(mail($dest, $sujet, $message, $headers)){
-          echo "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
-        }
-        else{
-          echo "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
-        }
-
-      }
+      echo $emailEnvoi;
     ?>
-
     <p class="text-center mt-3">Merci de votre visite et à bientôt !</p>
-
   </div>
 
+  <!-- Ligne séparation -->
   <div class="progress" id="progress">
     <div class="progress-bar" id="progressBarB" ></div>
-    <div class="progress-bar" id="progressBarH"></div>
+    <div class="progress-bar" id="progressBarG"></div>
     <div class="progress-bar" id="progressBarB"></div>
   </div>
 
@@ -165,8 +188,8 @@ include "connexion.php";
       <a id="clic" class="m-3" href="https://www.linkedin.com/in/philippe-perechodov/" target="_blank"><img class="logoLinkedin" src="img/linkedin.png" alt="LinkedIn"><img class="logoLinkedin" src="img/linkedinRed.png" alt="LinkedIn"></a>
     </div>
     <a href="mailto:philippe.perechodov@free.fr" class="text-light m-3">p.perechodov@codeur.online</a>
-    <p class="m-3">© Tous droits réservés - 2020</p>
-
+    <p class="m-3">Site réalisé en HTML - CSS - PHP - MySQL</p>
+    <p class="m-3">Juillet 2020</p>
   </div>
 </section>
 

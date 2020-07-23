@@ -7,4 +7,4 @@
   <a href="index.php"><img src="img\En_Construction.webp" alt="En Construction"></a>
 </div>
 
-<?php include "footer.php";
+<?php include "footer.php"; ?>

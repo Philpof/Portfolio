@@ -11,8 +11,6 @@
   else {
   include "connexion.php";
   include "select.php";
-  include "archive.php";
-  include "desarchive.php";
 ?>
 
 <!DOCTYPE html>
@@ -156,7 +154,7 @@
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
       echo "<td><a href='adminSQL.php?idSelect=" . $row['id'] . "' class='btn btn-info'>Modifier</a></td>"; // Bouton "Modifier", voir la page "select.php"
-      echo "<td><a href='adminSQL.php?idArchive=" . $row['id'] . "' class='btn btn-warning'>Archiver</a></td>"; // Bouton "Archiver", voir la page "archive.php"
+      echo "<td><a href='archive.php?idArchive=" . $row['id'] . "' class='btn btn-warning'>Archiver</a></td>"; // Bouton "Archiver", voir la page "archive.php"
       echo "<td><a href='suppr.php?idSuppr=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a></td></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
     }
     echo "</tbody></table><hr>";
@@ -182,7 +180,7 @@
       echo "<td>" . $row['titre'] . "</td>";
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
-      echo "<td><a href='adminSQL.php?idDesarchive=" . $row['id'] . "' class='btn btn-dark'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "archive.php"
+      echo "<td><a href='desarchive.php?idDesarchive=" . $row['id'] . "' class='btn btn-dark'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "archive.php"
     }
     echo "</tbody></table><hr>";
   ?>
