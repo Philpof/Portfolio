@@ -2,37 +2,44 @@
 include "header.php";
 include "connexion.php";
 
-if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
-  try {
-    $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
-    $nvl_Ent_Cont->execute(array(
-      ':nom' => $_POST['nom'],
-      ':mail' => $_POST['mail'],
-      ':message' => nl2br($_POST['message'])
-    ));
-  } catch (\Exception $e) {
-    echo $e->getMessage();
-  }
-
-  // Envoi d'un email
-  $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
-  $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
-  $headers = 'From:' . $_POST['mail'] .'';
-  $message = htmlspecialchars($_POST["message"]);
-
-  // Envoi d'email
-  if(mail($dest, $sujet, $message, $headers)){
-    header("Location: index.php?action=ok#section4");
-    if(isset($_GET['action']) && $_GET['action'] == "ok"){
+// Envoi d'un email si le formulaire est correctement rempli + affichage messages confirmation ou erreur + envoi mail dans base de donnée MySQL
+  // Affiche le message de confirmation si l'email a déjà été envoyé
+  if(isset($_GET['action']) && $_GET['action'] == "ok"){
     $emailEnvoi = "<div class='alert alert-success mt-4' role='alert'>Votre message a bien été envoyé !</div>";
+  }
+  elseif(!isset($_GET['action']) || $_GET['action'] != "ok"){
+
+    // Contrôle pour voir si les champs sont tous remplis
+    if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])) {
+
+      // Les variables
+      $dest = 'p.perechodov@codeur.online'; //'p.perechodov@codeur.online';
+      $sujet = 'Via "Contact" - Message de ' . htmlspecialchars($_POST['nom']); //permet d'échapper les balises et autres scripts
+      $headers = 'From:' . $_POST['mail'] .'';
+      $message = htmlspecialchars($_POST["message"]);
+      // Envoi de l'email
+      if(mail($dest, $sujet, $message, $headers)) {
+        // Le mail va dans la base de donnée MySQL
+        try {
+          $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
+          $nvl_Ent_Cont->execute(array(
+            ':nom' => $_POST['nom'],
+            ':mail' => $_POST['mail'],
+            ':message' => nl2br($_POST['message'])
+          ));
+        } catch (\Exception $e) {
+          echo $e->getMessage();
+        }
+
+        // Refresh de la page avec ancre sur "Contact"
+        header("Location: index.php?action=ok#section4");
+      }
+      // Message d'erreur si le mail n'a pas pu être envoyé
+      else {
+        $emailEnvoi = "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
+      }
     }
   }
-  elseif(!mail($dest, $sujet, $message, $headers)){
-  }
-  else {
-    $emailEnvoi = "<div class='alert alert-danger mt-4' role='alert'>Echec de l'envoie du message, veuillez réessayer ultérieurement ou adresser votre email à <a href='mailto:philippe.perechodov@free.fr'>p.perechodov@codeur.online</a></div>";
-  }
-}
 ?>
 
 
@@ -159,7 +166,10 @@ if (!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['message'])
       </div>
     </form>
     <?php
-      echo $emailEnvoi;
+    // Affiche le message défini plus haut relatif à l'envoi de mail ou à son échec
+      if (isset($emailEnvoi)) {
+        echo $emailEnvoi;
+      }
     ?>
     <p class="text-center mt-3">Merci de votre visite et à bientôt !</p>
   </div>
