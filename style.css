@@ -50,13 +50,13 @@ html {
 
 
 /* Section 1 */
-#admin a {
+#admin {
   text-decoration: none;
   font-size: 1em;
   color: white;
 }
 
-#admin a:hover {
+#admin:hover {
   color: #790000;
 }
 
@@ -71,12 +71,14 @@ html {
 #titre {
   font-family: 'Amplify';
   font-size: 4.5em;
+  margin-left: 0.5em;
 }
 
 #sstitre {
   font-size: 1em;
   margin-left: 15em;
   margin-top: -1.5em;
+  padding-bottom: 15em;
 }
 
 /* ----- Vertical Nav ----- */
@@ -85,8 +87,26 @@ html {
   margin-bottom: 5em;
 }
 
-.icon-bar {
-  margin-bottom: auto;
+#drop {
+  font-family: 'Amplify';
+  font-size: 2em;
+  color: white;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  padding-bottom: -10em;
+}
+
+.dropdown-menu {
+  background-color: transparent;
+  padding-right: 3em;
+  padding-top: 13em;
+  transition: all 0.5s ease;
+}
+
+#icon-bar {
+  width: 300px;
+  font-size: 1em;
 }
 
 .icon-bar a {
@@ -121,9 +141,10 @@ html {
 
 #liens {
   font-family: 'Amplify';
-  font-size: 3em;
+  font-size: 2em;
   text-align: center;
   text-decoration: none;
+  background-color: none;
 }
 
 #photo {
@@ -166,9 +187,10 @@ h3 {
 
 #section2 h2 {
   color: black;
+  text-shadow: 0px 0px 40px white;
 }
 
-.projets {
+#projets {
   display: flex;
   width: 100%;
   height: 50vh;
@@ -186,7 +208,7 @@ h3 {
   box-shadow: 0 100px 1000px rgba(0, 0, 0, 1);
 }
 
-.articles {
+#articles {
   display: flex;
   width: 100%;
   padding: 4% 2%;
@@ -261,7 +283,8 @@ h3 {
 
 #phil {
   font-family: 'Amplify';
-  font-size: 4em;
+  font-size: 3em;
+  margin-bottom: 0.3em;
 }
 
 #dev {
@@ -323,12 +346,36 @@ h3 {
 
 
 /* Media Queries */
+@media (min-width: 476px) {
+  .dropdown-menu {
+    padding-right: -1em;
+    padding-top: 7.5em;
+  }
+}
+
 @media (min-width: 576px) {
   #qui {
     margin-left: 3em;
   }
   #sstitre {
     margin-left: 20em;
+    padding-bottom: 10em;
+  }
+
+  .dropdown-menu {
+    padding-right: 0em;
+    padding-top: 16em;
+  }
+
+  #phil {
+    font-size: 3.5em;
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu {
+    padding-right: 3em;
+    padding-top: 16em;
   }
 }
 
@@ -337,21 +384,25 @@ h3 {
     font-size: 2em;
   }
 
-  .articles {
+  #articles {
     height: 60vh;
   }
 
-  .projets {
+  #projets {
     height: 60vh;
   }
 
   #titre {
     font-size: 5em;
-    margin-left: 1em;
   }
 
   #sstitre {
     margin-left: 28em;
+  }
+
+  .dropdown-menu {
+    padding-right: 10em;
+    padding-top: 16em;
   }
 }
 
@@ -360,16 +411,16 @@ h3 {
     font-size: 2.3em;
   }
 
-  .articles {
+  #articles {
     height: 70vh;
   }
 
-  .projets {
+  #projets {
     height: 70vh;
   }
 
   #titre {
-    padding-top: 0.5em;
+    padding-top: 0em;
   }
 
   #sstitre {
@@ -383,7 +434,7 @@ h3 {
 
   #qui {
     padding-bottom: 4em;
-    margin-left: 7em;
+    margin-left: 0em;
   }
 
   #photo {
@@ -395,11 +446,20 @@ h3 {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
+
+  .dropdown-menu {
+    padding-right: 1em;
+    padding-top: 1em;
+  }
+
+  #phil {
+    font-size: 4em;
+  }
 }
 
 @media (min-width: 1200px) {
   #titre {
-    padding-top: 1.5em;
+    padding-top: 0em;
     margin-left: 0.5em;
   }
 
@@ -407,20 +467,16 @@ h3 {
     margin-left: 25.5em;
   }
 
-  .articles {
+  #articles {
     height: 80vh;
   }
 
-  .projets {
+  #projets {
     height: 80vh;
   }
 
   .box>span {
     font-size: 2.5em;
-  }
-
-  #qui {
-    margin-left: 0em;
   }
 
   #qui p {
@@ -441,11 +497,15 @@ h3 {
   h2 {
     font-size: 4em;
   }
+  #icon-bar {
+    width: 400px;
+    font-size: 1.3em;
+  }
 }
 
 @media (min-width: 1500px) {
   #titre {
-    padding-top: 1em;
+    padding-top: 0em;
     margin-left: 1em;
     font-size: 5.5em;
   }
@@ -454,11 +514,11 @@ h3 {
     margin-left: 31.3em;
   }
 
-  .articles {
+  #articles {
     height: 90vh;
   }
 
-  .projets {
+  #projets {
     height: 90vh;
   }
 
@@ -468,6 +528,9 @@ h3 {
 
   #qui p {
     font-size: 1.2em;
+  }
+  #icon-bar {
+    width: 500px;
   }
 }
 
@@ -487,5 +550,9 @@ h3 {
 
   #qui p {
     font-size: 1.3em;
+  }
+  #icon-bar {
+    width: 500px;
+    font-size: 1.5em;
   }
 }

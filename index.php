@@ -46,27 +46,37 @@ include "connexion.php";
 <!-- Section 1 A propos-->
 <section id="section1" class="container-fluid">
 
-  <div id="admin">
-    <a href="login.php" class="d-flex justify-content-end">| Administration |</a>
+  <div class="row justify-content-between">
+    <a href="login.php" id="admin" class="ml-2">| Administration |</a>
+
+    <div class=" btn-lg dropdown">
+      <button type="button" id="drop" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Menu
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <!-- Dropdown menu links -->
+        <div id="icon-bar" class="icon-bar d-flex flex-column">
+          <a id="liens" href="#section1" class="effetBar">A propos</a>
+          <a id="liens" href="#section2" class="effetBar">Projets & Réalisations</a>
+          <a id="liens" href="#section3" class="effetBar">Articles</a>
+          <a id="liens" href="#section4" class="effetBar">Contact</a>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
   <div class="row">
       <!-- Titre -->
     <h1 id="titre" class="text-light col-sm-12">Philippe Perechodov</h1>
     <h5 id="sstitre" class="text-light font-italic col-sm-12">- Developpeur Web -</h5>
-
-    <!-- Navbar -->
-    <div id="navbar" class="icon-bar col-sm-12 offset-lg-6 col-lg-6 d-flex flex-column">
-      <a id="liens" href="#section1" class="effetBar">A propos</a>
-      <a id="liens" href="#section2" class="effetBar">Projets & Réalisations</a>
-      <a id="liens" href="#section3" class="effetBar">Articles</a>
-      <a id="liens" href="#section4" class="effetBar">Contact</a>
-    </div>
   </div>
 
   <!-- Qui suis-je ?-->
   <div class="row">
     <img id="photo" class="col-sm-7 col-md-5 col-lg-2 text-white" src="img/PhotoCV.png" alt="Photo ">
-    <div id="qui" class="col-sm-10 col-md-10 col-xl-6 text-light text-justify">
+    <div id="qui" class="col-sm-10 col-lg-6 text-light text-justify">
       <h3>Qui suis-je ?</h3>
       <p>
         <!-- SQL : Pour afficher la dernière entrée du champ "contenu" de la base de données -->
@@ -94,10 +104,7 @@ include "connexion.php";
 <!-- Section 2 : Projets & Réalisations -->
 <div id="section2" class="container-fluid text-light">
   <h2 class="text-left pl-5 pt-3">Projets & Réalisations</h2>
-  <div class="projets">
-
-
-
+  <div id="projets">
 
   </div>
 
@@ -115,7 +122,7 @@ include "connexion.php";
 
 <div id="section3" class="container-fluid text-light">
   <h2 class="text-right pr-5 pt-3 ">Articles</h2>
-  <div class="articles">
+  <div id="articles">
     <a href="article.php" class="box">
       <img src="img/Faun.png">
       <span>Intégration Faun</span>
