@@ -37,8 +37,8 @@ include "connexion.php";
     <div class="progress-bar" id="progressBarB"></div>
   </div>
 
-<!-- Footer -->
-<section>
+<!-- Bas de page -->
+<!-- <section>
   <div id="footer" class="container-fluid text-center text-light pt-3 pb-3">
     <div>
       <div class="icon-bar no-wrap col-sm-12 d-flex flex-column container-fluid justify-content-center">
@@ -54,7 +54,7 @@ include "connexion.php";
     <p class="m-3">Site réalisé en HTML - CSS - PHP - MySQL</p>
     <p class="m-3">Juillet 2020</p>
   </div>
-</section>
+</section> -->
 
 <?php
 include "footer.php";
