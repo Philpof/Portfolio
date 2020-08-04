@@ -17,7 +17,7 @@
 
 
   // Pour afficher la dernière entrée du champ "contenu" de la base de données
-    $sql = "SELECT id, contenu FROM propos ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT id, contenu FROM propos WHERE archive='0' ORDER BY id DESC LIMIT 1";
     foreach ($bdd -> query($sql) as $lastPropos) {
     }
 ?>

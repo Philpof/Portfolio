@@ -48,10 +48,11 @@
   <meta name="author" content="Philippe PERECHODOV">
   <title>Formulaire d'authentification</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <section class="container bg-light">
+  <section class="container bg-light pt-5 pb-5">
     <h1 class="text-center">Login</h1>
 
     <hr>
@@ -74,6 +75,11 @@
     <hr>
     <a href="index.php">Revenir au site</a>
     <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 </section>
 
