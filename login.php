@@ -1,7 +1,7 @@
 <?php
   include "connexion.php";
   $sql = "SELECT * FROM users WHERE id = '1'";
-  foreach  ($bdd->query($sql) as $row) {
+  foreach  ($db->query($sql) as $row) {
   }
 
 

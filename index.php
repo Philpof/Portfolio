@@ -21,7 +21,7 @@ include "connexion.php";
       if(mail($dest, $sujet, $message, $headers)) {
         // Le mail va dans la base de donnée MySQL
         try {
-          $nvl_Ent_Cont = $bdd->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
+          $nvl_Ent_Cont = $db->prepare('INSERT INTO contacts (nom, mail, message) VALUES (:nom, :mail, :message)');
           $nvl_Ent_Cont->execute(array(
             ':nom' => $_POST['nom'],
             ':mail' => $_POST['mail'],

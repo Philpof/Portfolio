@@ -14,4 +14,3 @@ $_SESSION = null;
 
 // On redirige le visiteur vers la page d'accueil
 header ('location: login.php');
-?>

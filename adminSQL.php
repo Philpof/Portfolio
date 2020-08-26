@@ -65,7 +65,7 @@
     // Pour faire une entrée dans la base donnée
     if (!isset($_GET['idSelect']) && !isset($row_idSelect) && !empty($_POST['titre']) && !empty($_POST['contenu']) && !isset($_POST['Annuler'])) {
       try {
-        $nvl_Ent_Prop = $bdd->prepare('INSERT INTO propos (titre, contenu) VALUES (:titre, :contenu)');
+        $nvl_Ent_Prop = $db->prepare('INSERT INTO propos (titre, contenu) VALUES (:titre, :contenu)');
         $nvl_Ent_Prop->execute(array(
           ':titre' => $_POST['titre'],
           ':contenu' => nl2br($_POST['contenu'])
@@ -79,7 +79,7 @@
     // Pour valider la modification dans la base de donnée de l'entrée sélectionnée
     elseif (isset($_GET['idSelect']) && isset($row_idSelect) && !empty($_POST['titre']) && !empty($_POST['contenu']) && !isset($_POST['Annuler'])) {
       try {
-        $modif_Ent_Prop = $bdd->prepare('UPDATE propos SET titre = :titre, contenu = :contenu WHERE id = :idSelect');
+        $modif_Ent_Prop = $db->prepare('UPDATE propos SET titre = :titre, contenu = :contenu WHERE id = :idSelect');
         $modif_Ent_Prop->execute(array(
           ':titre' => $_POST['titre'],
           ':contenu' => nl2br($_POST['contenu']),
@@ -148,15 +148,15 @@
               </tr>
             </thead>
             <tbody>";
-    foreach ($bdd -> query($sql) as $row) {
+    foreach ($db -> query($sql) as $row) {
       echo "<tr>";
       echo "<td>" . $row['id'] . "</td>";
       echo "<td>" . $row['titre'] . "</td>";
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
       echo "<td><a href='adminSQL.php?idSelect=" . $row['id'] . "' class='btn btn-info'>Modifier</a></td>"; // Bouton "Modifier", voir la page "select.php"
-      echo "<td><a href='archive.php?idArchive=" . $row['id'] . "' class='btn btn-warning'>Archiver</a></td>"; // Bouton "Archiver", voir la page "archive.php"
-      echo "<td><a href='suppr.php?idSuppr=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a></td></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
+      echo "<td><a href='MODEL/archiving.php?idArchive=" . $row['id'] . "' class='btn btn-warning'>Archiver</a></td>"; // Bouton "Archiver", voir la page "MODEL/archiving.php"
+      echo "<td><a href='MODEL/remove.php?idSuppr=" . $row['id'] . "' class='btn btn-danger'>Supprimer</a></td></tr>"; // Bouton "Supprimer", voir la page "suppr.php"
     }
     echo "</tbody></table><hr>";
   ?>
@@ -175,13 +175,13 @@
               </tr>
             </thead>
             <tbody>";
-    foreach ($bdd -> query($sql) as $row) {
+    foreach ($db -> query($sql) as $row) {
       echo "<tr>";
       echo "<td>" . $row['id'] . "</td>";
       echo "<td>" . $row['titre'] . "</td>";
       echo "<td>" . $row['date'] . "</td>";
       echo "<td>" . $row['contenu'] . "</td>";
-      echo "<td><a href='desarchive.php?idDesarchive=" . $row['id'] . "' class='btn btn-dark'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "archive.php"
+      echo "<td><a href='MODEL/unarchiving.php?idDesarchive=" . $row['id'] . "' class='btn btn-dark'>Désarchiver</a></td></tr>"; // Bouton "Désarchiver", voir la page "MODEL/unarchiving.php"
     }
     echo "</tbody></table><hr>";
   ?>
