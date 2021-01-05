@@ -190,25 +190,5 @@ include "connexion.php";
 
 </div>
 
-
-<!-- Footer -->
-<!-- <section>
-  <div id="footer" class="container-fluid text-center text-light pt-3 pb-3">
-    <div>
-      <div class="icon-bar no-wrap col-sm-12 d-flex flex-column container-fluid justify-content-center">
-        <a href="#section1" id="phil" class="effetBar">Philippe Perechodov</a>
-      </div>
-      <p id="dev" class="pb-3 col-sm-12 offset-lg-2 col-lg-10 text-center font-italic">- Developpeur Web -</p>
-    </div>
-    <div class="m-2 row d-flex justify-content-center">
-      <a id="clic" class="m-3" href="https://github.com/Philpof" target="_blank"><img class="logoGithub" src="img/github.png" alt="GitHub"><img class="logoGithub" src="img/githubRed.png" alt="GitHub"></a>
-      <a id="clic" class="m-3" href="https://www.linkedin.com/in/philippe-perechodov/" target="_blank"><img class="logoLinkedin" src="img/linkedin.png" alt="LinkedIn"><img class="logoLinkedin" src="img/linkedinRed.png" alt="LinkedIn"></a>
-    </div>
-    <a href="mailto:philippe.perechodov@free.fr" class="text-light m-3">p.perechodov@codeur.online</a>
-    <p class="m-3">Site réalisé en HTML - CSS - PHP - MySQL</p>
-    <p class="m-3">Juillet 2020</p>
-  </div>
-</section> -->
-
 <?php
 include "footer.php";
