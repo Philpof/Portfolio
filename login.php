@@ -15,7 +15,7 @@
     if(!empty($_POST['password']))
     {
       // Sont-ils les mêmes que les constantes ?
-      if($_POST['password'] !== PASSWORD)
+      if(!password_verify($_POST['password'], PASSWORD))
       {
         $password_KO = "<div class='alert alert-danger mt-5' role='alert'>Mot de passe incorrect !</div>";
       }

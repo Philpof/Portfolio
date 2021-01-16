@@ -57,6 +57,26 @@
   }
   ?>
 
+  <!-- Changer le MDP -->
+  <?php
+  if ($_POST['newMDP'] != null && !empty($_POST['newMDP'])) {
+    try {
+      $newMDP = $db->prepare('UPDATE users SET mdp = :mdp WHERE id = "1"');
+      $newMDP->execute(array(':mdp' => password_hash($_POST['newMDP'], PASSWORD_DEFAULT)));
+      header('Location: adminSQL.php');
+      exit();
+    } catch (\Exception $e) {
+      echo $e->getMessage();
+    }
+  }
+  ?>
+  <form action="" method="post">
+    <label for="newMDP" class="col-sm-8 col-lg-3 align-top">Nouveau mot de passe :</label>
+    <input type="newMDP" name="newMDP" id="newMDP" class="col-sm-4 align-top border border-info" required>
+    <input type="submit" name="submit" value="Valider" class="offset-lg-1 col-sm-2">
+  </form>
+  <hr>
+
 
   <!-- Pour faire une entrée dans la base donnée ou en modifier déjà une -->
   <p class="font-weight-bold">Effectuer une nouvelle entrée dans la table "propos" ou modifier une entrée existante :</p>
