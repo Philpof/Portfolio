@@ -32,10 +32,11 @@
   <hr>
 
 
-  <!-- Afficher le message de bienvenu -->
-  <?php
-    echo "<div class='alert alert-info text-center' role='alert'>Bonjour, " . $_SESSION['login'] ." !</div>";
-  ?>
+<!-- Afficher le message de bienvenu -->
+<?php
+  echo "<div class='alert alert-info text-center' role='alert'>Bonjour, " . $_SESSION['login'] ." !</div>";
+?>
+
 
 <!-- Liens pour retourner au site et pour se déconnecter de la session -->
   <hr>
@@ -57,16 +58,19 @@
   }
   ?>
 
+
   <!-- Changer le MDP -->
   <?php
-  if ($_POST['newMDP'] != null && !empty($_POST['newMDP'])) {
-    try {
-      $newMDP = $db->prepare('UPDATE users SET mdp = :mdp WHERE id = "1"');
-      $newMDP->execute(array(':mdp' => password_hash($_POST['newMDP'], PASSWORD_DEFAULT)));
-      header('Location: adminSQL.php');
-      exit();
-    } catch (\Exception $e) {
-      echo $e->getMessage();
+  if (isset($_POST['newMDP'])) {
+    if ($_POST['newMDP'] != null && !empty($_POST['newMDP'])) {
+      try {
+        $newMDP = $db->prepare('UPDATE users SET mdp = :mdp WHERE id = "1"');
+        $newMDP->execute(array(':mdp' => password_hash($_POST['newMDP'], PASSWORD_BCRYPT)));
+        header('Location: adminSQL.php');
+        exit();
+      } catch (\Exception $e) {
+        echo $e->getMessage();
+      }
     }
   }
   ?>

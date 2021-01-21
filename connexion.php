@@ -2,7 +2,7 @@
 // Connection to the datebase
 $serverName = "localhost";
 $userName = "root";
-$password = "";
+$password = "root";
 $databaseName = "portfolio";
 
 try {
